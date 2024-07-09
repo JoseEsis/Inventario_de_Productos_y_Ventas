@@ -54,6 +54,26 @@ void buscarProducto(Producto inventario[], int &cantidadProductos)
 	}
 		
 }
+void actualizarProducto(Producto inventario[], int &cantidadProductos)
+{
+	string nombreActualizar;
+    cout<<"Ingrese el nombre del producto a actualizar: ";
+    cin.ignore();
+    getline(cin, nombreActualizar);
+    
+    for (int i = 0; i < cantidadProductos; ++i) 
+	{
+        if (inventario[i].nombre == nombreActualizar) 
+		{
+            cout << "Ingrese el nuevo nombre del producto: ";
+            getline(cin, inventario[i].nombre);
+            cout << "Ingrese el nuevo precio del producto: ";
+            cin >> inventario[i].precio;
+            cout << "Producto actualizado correctamente.\n";
+            break;  
+        }
+    }
+}
 
 int main() 
 {
@@ -100,6 +120,12 @@ int main()
 			{
 				cout<<"\nBUSCAR PRODUCTO: "<<endl;
 				buscarProducto(inventario, cantidadProductos);               
+                break;
+            }
+            case 'D': 
+			{
+				cout<<"\nACTUALIZAR PRODUCTO: "<<endl;
+				actualizarProducto( inventario, cantidadProductos);
                 break;
             }
             default: 
