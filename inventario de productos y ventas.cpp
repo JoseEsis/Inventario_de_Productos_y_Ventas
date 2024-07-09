@@ -26,6 +26,16 @@ void agregarProducto(Producto inventario[], int &cantidadProductos)
     cantidadProductos++;
 
 }
+void listarProductos(Producto inventario[], int &cantidadProductos)
+{
+	for(int i=0; i<cantidadProductos; i++)
+	{
+		cout<<i+1<<"| Nombre: "<<inventario[i].nombre<<endl;
+		cout<<"   Precio: "<<inventario[i].precio<<endl;		
+		
+	}	
+	
+}
 
 int main() 
 {
@@ -60,6 +70,12 @@ int main()
 			{
 				cout<<"\nAGREGAR PRODUCTO: "<<endl;
 				agregarProducto(inventario, cantidadProductos);
+                break;
+            }
+            case 'B': 
+			{
+				cout<<"\nLISTA DE LOS PRODUCTOS REGISTRADOS: "<<endl;
+               	listarProductos(inventario, cantidadProductos);
                 break;
             }
             default: 
