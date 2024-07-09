@@ -33,8 +33,26 @@ void listarProductos(Producto inventario[], int &cantidadProductos)
 		cout<<i+1<<"| Nombre: "<<inventario[i].nombre<<endl;
 		cout<<"   Precio: "<<inventario[i].precio<<endl;		
 		
-	}	
-	
+	}
+}
+void buscarProducto(Producto inventario[], int &cantidadProductos)
+{
+
+	string nombreProducto;
+	cout<<"Ingrese el nombre del producto: ";
+    cin.ignore();
+	getline(cin, nombreProducto );
+	for(int i=0; i<cantidadProductos; i++)
+	{
+		if(inventario[i].nombre==nombreProducto)
+		{
+			cout<<"\nProducto encontrado"<<endl;
+			cout<<"Nombre: "<<inventario[i].nombre<<endl;
+			cout<<"Precio: "<<inventario[i].precio<<endl;
+			break;
+		}
+	}
+		
 }
 
 int main() 
@@ -78,11 +96,18 @@ int main()
                	listarProductos(inventario, cantidadProductos);
                 break;
             }
+            case 'C': 
+			{
+				cout<<"\nBUSCAR PRODUCTO: "<<endl;
+				buscarProducto(inventario, cantidadProductos);               
+                break;
+            }
             default: 
 			{
                 cout << "\nOpcion invalida " << endl;
                 break;
             }
+            
         }       
 	
     } while (opcion != 'S');
