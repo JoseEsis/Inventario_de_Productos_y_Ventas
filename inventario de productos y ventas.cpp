@@ -122,6 +122,17 @@ void listarVenta(Venta registroVentas[], int &cantidadVentas)
         cout<<"precio total: "<<registroVentas[i].precioTotal<<endl;
     }
 }
+void totalVentasRealizadas(Venta registroVentas[], int &cantidadVentas)
+{
+	int sumaTotal=0;
+	cout<<"La cantidad total de ventas realizadas: "<<cantidadVentas<<endl;
+	for (int i=0; i<cantidadVentas; i++ )
+	{
+		sumaTotal+=registroVentas[i].precioTotal;
+	}
+	cout<<"Ganancia total de las ventas realizadas: "<<sumaTotal<<endl;
+	
+}
 int main() 
 {
     char opcion;
@@ -203,6 +214,12 @@ int main()
 					listarVenta( registroVentas,cantidadVentas);
 				}
 				
+				break;
+			}
+			case 'H':
+			{
+				cout<<"\nEL TOTAL DE VENTAS REALIZADAS: "<<endl;
+				totalVentasRealizadas(registroVentas, cantidadVentas);
 				break;
 			}
             default: 
