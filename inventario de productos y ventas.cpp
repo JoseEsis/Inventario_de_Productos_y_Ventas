@@ -74,7 +74,22 @@ void actualizarProducto(Producto inventario[], int &cantidadProductos)
         }
     }
 }
-
+void eliminaProducto(Producto inventario[], int &cantidadProductos, string &nombreEliminar)
+{
+	for (int i=0; i <cantidadProductos; i++)
+	{
+        if (inventario[i].nombre == nombreEliminar) 
+		{
+            for (int j = i; j < cantidadProductos - 1; j++)
+			{
+                inventario[j] = inventario[j + 1];
+            }
+            cantidadProductos--;
+            cout << "Producto eliminado." << endl;
+            break;
+        }
+    }
+}
 int main() 
 {
     char opcion;
@@ -127,6 +142,17 @@ int main()
 				cout<<"\nACTUALIZAR PRODUCTO: "<<endl;
 				actualizarProducto( inventario, cantidadProductos);
                 break;
+            }
+            case 'E': 
+			{
+				cout << "\nELIMINAR UN PRODUCTO: " << endl;
+                string nombreEliminar;
+                cout << "Ingrese el nombre del producto: ";
+				cin.ignore();
+                getline(cin, nombreEliminar);
+                eliminaProducto(inventario, cantidadProductos, nombreEliminar);
+				break;	        			
+                
             }
             default: 
 			{
