@@ -112,6 +112,16 @@ void registrarVenta(Venta registroVentas[], int &cantidadVentas, Producto invent
         }
     } 
 }
+void listarVenta(Venta registroVentas[], int &cantidadVentas)
+{
+	for(int i=0; i <cantidadVentas; i++)
+    {
+        cout<<i+1<< " | idVenta: " << registroVentas[i].idVenta<<endl;
+        cout<<"Producto: "<<registroVentas[i].producto<<endl;
+        cout<<"Cantidad: "<<registroVentas[i].cantidad<<endl;
+        cout<<"precio total: "<<registroVentas[i].precioTotal<<endl;
+    }
+}
 int main() 
 {
     char opcion;
@@ -181,6 +191,19 @@ int main()
 				registrarVenta(registroVentas, cantidadVentas,  inventario, cantidadProductos); 
             	
             	break;
+			}
+			case 'G':
+			{
+				cout<<"\nLISTAR REGISTRO DE VENTAS: "<<endl;
+				if(cantidadVentas==0){
+					cout<<"\nNo hay una venta registrada."<<endl;
+				}
+				else
+				{
+					listarVenta( registroVentas,cantidadVentas);
+				}
+				
+				break;
 			}
             default: 
 			{
