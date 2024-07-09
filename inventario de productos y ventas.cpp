@@ -222,6 +222,11 @@ int main()
 				totalVentasRealizadas(registroVentas, cantidadVentas);
 				break;
 			}
+			case 'S':
+			{
+				cout << "\nSaliendo del programa....." << endl;
+                break;
+			}
             default: 
 			{
                 cout << "\nOpcion invalida " << endl;
