@@ -80,7 +80,7 @@ void eliminaProducto(Producto inventario[], int &cantidadProductos, string &nomb
 	{
         if (inventario[i].nombre == nombreEliminar) 
 		{
-            for (int j = i; j < cantidadProductos - 1; j++)
+            for (int j=i; j<cantidadProductos-1; j++)
 			{
                 inventario[j] = inventario[j + 1];
             }
@@ -89,6 +89,28 @@ void eliminaProducto(Producto inventario[], int &cantidadProductos, string &nomb
             break;
         }
     }
+}
+void registrarVenta(Venta registroVentas[], int &cantidadVentas, Producto inventario[], int cantidadProductos) 
+{
+    cout<<"Ingrese el idVenta: ";
+    cin>>registroVentas[cantidadVentas].idVenta;
+    cin.ignore();
+    cout <<"Ingrese el nombre del producto: ";
+    getline(cin, registroVentas[cantidadVentas].producto);
+
+    for (int i=0; i<cantidadProductos; i++)
+	{
+        if (inventario[i].nombre == registroVentas[cantidadVentas].producto) 
+		{
+            cout<<"Ingrese la cantidad: ";
+            cin>>registroVentas[cantidadVentas].cantidad;
+            registroVentas[cantidadVentas].precioTotal=registroVentas[cantidadVentas].cantidad*inventario[i].precio;
+			cout<<"El precio total es: "<< registroVentas[cantidadVentas].precioTotal<< endl;
+			cout<<"Venta registrada.\n";
+			cantidadVentas++;
+            break;
+        }
+    } 
 }
 int main() 
 {
@@ -151,9 +173,15 @@ int main()
 				cin.ignore();
                 getline(cin, nombreEliminar);
                 eliminaProducto(inventario, cantidadProductos, nombreEliminar);
-				break;	        			
-                
+				break;    			
             }
+            case'F':
+            {
+            	cout<<"\nREGISTRAR UNA VENTA: "<<endl;
+				registrarVenta(registroVentas, cantidadVentas,  inventario, cantidadProductos); 
+            	
+            	break;
+			}
             default: 
 			{
                 cout << "\nOpcion invalida " << endl;
